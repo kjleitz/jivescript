@@ -1,6 +1,6 @@
 # JiveScript
 
-Simple & _very_ lightweight chatbot framework.
+Simple & _very_ lightweight chatbot framework. Trigger syntax heavily inspired by the lovely [RiveScript](https://github.com/aichaos/rivescript-js).
 
 ## Installation
 
