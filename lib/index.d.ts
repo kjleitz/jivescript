@@ -8,21 +8,8 @@ interface Trigger {
     patterns: string[];
     callback(message: Message): void | Promise<void>;
 }
-interface TriggerTier {
-    current: Trigger[];
-    parent: TriggerTier | null;
-}
-interface TriggerMatchInfo {
-    trigger: Trigger;
-    interpreted: Message['interpreted'];
-    pattern: Message['pattern'];
-    patternIndex: Message['patternIndex'];
-}
-declare const patternToRegex: (pattern: string) => RegExp;
-declare const formatTextForTrigger: (text: string) => string;
-declare const matchTextToTrigger: (text: string, triggers: Trigger[]) => TriggerMatchInfo | null;
-declare class RavaScript {
-    triggerTier: TriggerTier;
+declare class JiveScript {
+    private triggerTier;
     lastResponse?: string;
     constructor();
     private readonly triggers;
@@ -31,4 +18,4 @@ declare class RavaScript {
     hear(pattern: string | string[], callback: Trigger['callback']): void;
     say(responseText: string, callback?: () => void | Promise<void>): void;
 }
-declare const rs: RavaScript;
+export default JiveScript;

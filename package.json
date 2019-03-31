@@ -8,13 +8,14 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack",
-    "deploy": "yarn build && yarn publish"
+    "deploy": "yarn build && typedoc --out doc && yarn publish"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
     "babel-loader": "^8.0.5",
     "ts-loader": "^5.3.3",
+    "typedoc": "^0.14.2",
     "typescript": "^3.4.1",
     "webpack": "^4.29.6"
   }

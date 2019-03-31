@@ -35,6 +35,7 @@ module.exports = {
   },
   output: {
     filename: 'index.js',
+    path: path.resolve(__dirname, 'lib'),
     library: 'JiveScript',
     libraryTarget: 'umd',
     umdNamedDefine: true,
