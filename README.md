@@ -25,6 +25,16 @@ import JiveScript from 'jivescript';
 
 const jive = new JiveScript();
 
+// Use `hear()` to supply a pattern (or an array of them) which the bot can
+// match against what it is told.
+jive.hear('cool', () => {
+  // Use `say()` to respond to that matched trigger.
+  jive.say('Sweet.');
+});
+
+// Nest more triggers in order to match those ones first so the bot can follow a
+// thread of conversation, falling back to lower-level triggers if no match is
+// found for the nested ones.
 jive.hear(['hi [*]', 'hello [*]'], () => {
   jive.say('Well, hi there!', () => {
     jive.hear('are you a wizard', () => {
@@ -33,6 +43,9 @@ jive.hear(['hi [*]', 'hello [*]'], () => {
   });
 });
 
+// The callback passed to `hear()` will receive a `message` parameter that
+// contains information about the matched message, in case you would like to
+// decide what to say based on that info.
 jive.hear(['[*] (um|uh) [*]', '[*] er [*]'], (message) => {
   switch (message.patternIndex) {
     case 0: jive.say("Um, WHAT?"); break;
@@ -40,12 +53,16 @@ jive.hear(['[*] (um|uh) [*]', '[*] er [*]'], (message) => {
   }
 });
 
-jive.hear('cool', (message) => {
-  jive.say('Sweet.');
-});
-
 jive.hear('repeat after me *', (message) => {
   jive.say(`You said "${message.text}", but technically I heard it as "${message.interpreted}"`);
+});
+
+// You can return a promise from the callback passed to `hear()` if your
+// response is dependent on an asynchronous action.
+jive.hear('yes or no', () => {
+  return fetch('https://yesno.wtf/api').then(resp => resp.json()).then(({ answer }) => {
+    jive.say(answer);
+  });
 });
 ```
 
@@ -72,6 +89,9 @@ jive.tell('I mean, er, I dunno, sorry').then(console.log);
 
 jive.tell("Repeat after me: I ain't got TIME for this").then(console.log);
 //=> "You said "I ain't got TIME for this", but technically I heard it as "i aint got time for this"
+
+jive.tell("Yes or no?").then(console.log);
+//=> "no"
 ```
 
 ## Contributing
