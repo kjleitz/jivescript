@@ -65,9 +65,16 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<h1 id="jivescript">JiveScript</h1>
-				<p>Simple and lightweight chatbot framework</p>
-				<h2 id="example">example</h2>
-				<pre><code class="language-js">jive.hear([<span class="hljs-string">'hi [*]'</span>, <span class="hljs-string">'hello [*]'</span>], () =&gt; {
+				<p>Simple &amp; <em>very</em> lightweight chatbot framework.</p>
+				<h2 id="installation">Installation</h2>
+				<pre><code>yarn <span class="hljs-keyword">add</span><span class="bash"> jivescript</span></code></pre><h2 id="usage">Usage</h2>
+				<pre><code class="language-js"><span class="hljs-comment">// Your bot's brain:</span>
+
+<span class="hljs-keyword">import</span> JiveScript <span class="hljs-keyword">from</span> <span class="hljs-string">'jivescript'</span>;
+
+<span class="hljs-keyword">const</span> jive = <span class="hljs-keyword">new</span> JiveScript();
+
+jive.hear([<span class="hljs-string">'hi [*]'</span>, <span class="hljs-string">'hello [*]'</span>], () =&gt; {
   jive.say(<span class="hljs-string">'Well, hi there!'</span>, () =&gt; {
     jive.hear(<span class="hljs-string">'are you a wizard'</span>, () =&gt; {
       jive.say(<span class="hljs-string">'Kinda.'</span>);
@@ -84,7 +91,37 @@ jive.hear([<span class="hljs-string">'[*] (um|uh) [*]'</span>, <span class="hljs
 
 jive.hear(<span class="hljs-string">'cool'</span>, (message) =&gt; {
   jive.say(<span class="hljs-string">'Sweet.'</span>);
+});
+
+jive.hear(<span class="hljs-string">'repeat after me *'</span>, (message) =&gt; {
+  jive.say(<span class="hljs-string">`You said "<span class="hljs-subst">${message.text}</span>", but technically I heard it as "<span class="hljs-subst">${message.interpreted}</span>"`</span>);
 });</code></pre>
+				<pre><code class="language-js"><span class="hljs-comment">// Interacting with your bot:</span>
+
+jive.tell(<span class="hljs-string">"Hi! I'm Keegan."</span>).then(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(response));
+<span class="hljs-comment">//=&gt; "Well, hi there!"</span>
+
+jive.tell(<span class="hljs-string">'Are you a wizard?'</span>).then(<span class="hljs-built_in">console</span>.log);
+<span class="hljs-comment">//=&gt; "Kinda."</span>
+
+jive.tell(<span class="hljs-string">'Cool.'</span>).then(<span class="hljs-built_in">console</span>.log);
+<span class="hljs-comment">//=&gt; "Sweet."</span>
+
+jive.tell(<span class="hljs-string">'Are you a wizard?'</span>).then(<span class="hljs-built_in">console</span>.log);
+<span class="hljs-comment">//=&gt; "Error: No matching trigger found!"</span>
+
+jive.tell(<span class="hljs-string">'So, uh... whatcha doing tonight?'</span>).then(<span class="hljs-built_in">console</span>.log);
+<span class="hljs-comment">//=&gt; "Um, WHAT?"</span>
+
+jive.tell(<span class="hljs-string">'I mean, er, I dunno, sorry'</span>).then(<span class="hljs-built_in">console</span>.log);
+<span class="hljs-comment">//=&gt; "u wot m8"</span>
+
+jive.tell(<span class="hljs-string">"Repeat after me: I ain't got TIME for this"</span>).then(<span class="hljs-built_in">console</span>.log);
+<span class="hljs-comment">//=&gt; "You said "I ain't got TIME for this", but technically I heard it as "i aint got time for this"</span></code></pre>
+				<h2 id="contributing">Contributing</h2>
+				<p>Bug reports and pull requests for this project are welcome at its <a href="https://github.com/kjleitz/jivescript">GitHub page</a>. If you choose to contribute, please be nice so I don&#39;t have to run out of bubblegum, etc.</p>
+				<h2 id="license">License</h2>
+				<p>This project is open source, under the terms of the <a href="https://github.com/kjleitz/jivescript/blob/master/LICENSE">MIT license</a>.</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
