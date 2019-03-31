@@ -1,6 +1,6 @@
 {
   "name": "jivescript",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Simple and lightweight chatbot framework",
   "main": "lib/index.js",
   "repository": "https://github.com/kjleitz/jivescript",
