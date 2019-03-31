@@ -3,9 +3,13 @@
   "version": "1.0.5",
   "description": "Simple and lightweight chatbot framework",
   "main": "lib/index.js",
+  "homepage": "https://github.com/kjleitz/jivescript",
   "repository": "https://github.com/kjleitz/jivescript",
-  "author": "Keegan Leitz <keegan@openbay.com>",
+  "author": "Keegan Leitz <kjleitz@gmail.com>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kjleitz/jivescript/issues"
+  },
   "scripts": {
     "build": "webpack && typedoc --out doc"
   },
@@ -17,5 +21,13 @@
     "typedoc": "^0.14.2",
     "typescript": "^3.4.1",
     "webpack": "^4.29.6"
-  }
+  },
+  "keywords": [
+    "chat",
+    "chatbot",
+    "bot",
+    "ai",
+    "alexa",
+    "slackbot"
+  ]
 }
