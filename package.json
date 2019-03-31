@@ -1,0 +1,20 @@
+{
+  "name": "jivescript",
+  "version": "1.0.0",
+  "description": "Simple and lightweight chatbot framework",
+  "main": "lib/index.js",
+  "repository": "https://github.com/kjleitz/jivescript",
+  "author": "Keegan Leitz <keegan@openbay.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc && babel lib --out-dir lib"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "babel-loader": "^8.0.5",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.4.1",
+    "webpack": "^4.29.6"
+  }
+}
