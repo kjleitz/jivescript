@@ -7,8 +7,7 @@
   "author": "Keegan Leitz <keegan@openbay.com>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack",
-    "deploy": "yarn build && typedoc --out doc && yarn publish"
+    "build": "webpack && typedoc --out doc"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
