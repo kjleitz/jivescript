@@ -4,6 +4,14 @@ Simple & _very_ lightweight chatbot framework.
 
 ## Installation
 
+Install via `npm`:
+
+```
+npm install jivescript
+```
+
+Alternatively, install via `yarn`:
+
 ```
 yarn add jivescript
 ```
