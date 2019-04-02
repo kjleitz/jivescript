@@ -94,6 +94,10 @@ jive.tell("Yes or no?").then(console.log);
 //=> "no"
 ```
 
+## Playground
+
+Try it out [here](https://jsfiddle.net/keegan_openbay/qwg9uvm3/72/).
+
 ## Contributing
 
 Bug reports and pull requests for this project are welcome at its [GitHub page](https://github.com/kjleitz/jivescript). If you choose to contribute, please be nice so I don't have to run out of bubblegum, etc.
