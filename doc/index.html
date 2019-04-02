@@ -114,6 +114,20 @@ jive.hear(<span class="hljs-string">'yes or no'</span>, () =&gt; {
   <span class="hljs-keyword">return</span> fetch(<span class="hljs-string">'https://yesno.wtf/api'</span>).then(<span class="hljs-function"><span class="hljs-params">resp</span> =&gt;</span> resp.json()).then(<span class="hljs-function">(<span class="hljs-params">{ answer }</span>) =&gt;</span> {
     jive.say(answer);
   });
+});
+
+<span class="hljs-comment">// Check the message for what text was replaced in order to customize responses</span>
+jive.hear(<span class="hljs-string">'hi my name is * how are you *'</span>, (message) =&gt; {
+  <span class="hljs-keyword">const</span> name = message.replacements[<span class="hljs-string">'*'</span>][<span class="hljs-number">0</span>];
+  <span class="hljs-keyword">const</span> time = message.replacements[<span class="hljs-string">'*'</span>][<span class="hljs-number">1</span>];
+  jive.say(<span class="hljs-string">`Hi <span class="hljs-subst">${name}</span>! I'm doing fine <span class="hljs-subst">${time}</span>, thank you!`</span>, () =&gt; {
+    jive.hear(<span class="hljs-string">'i thought you were doing terribly and [*] honestly'</span>, (message) =&gt; {
+      jive.say(<span class="hljs-string">`Well, technically I am <span class="hljs-subst">${message.replacements[<span class="hljs-string">'[*]'</span>][<span class="hljs-number">0</span>]}</span>, but it's not unmanageable.`</span>);
+    });
+    jive.hear(<span class="hljs-string">'oh by the way is your (wife|brother) doing better'</span>, (message) =&gt; {
+      jive.say(<span class="hljs-string">`Yep! Really lucky: full recovery for my <span class="hljs-subst">${message.replacements[<span class="hljs-string">'(wife|brother)'</span>][<span class="hljs-number">0</span>]}</span>, actually!`</span>);
+    });
+  });
 });</code></pre>
 				<pre><code class="language-js"><span class="hljs-comment">// Interacting with your bot:</span>
 
@@ -139,7 +153,20 @@ jive.tell(<span class="hljs-string">"Repeat after me: I ain't got TIME for this"
 <span class="hljs-comment">//=&gt; "You said "I ain't got TIME for this", but technically I heard it as "i aint got time for this"</span>
 
 jive.tell(<span class="hljs-string">"Yes or no?"</span>).then(<span class="hljs-built_in">console</span>.log);
-<span class="hljs-comment">//=&gt; "no"</span></code></pre>
+<span class="hljs-comment">//=&gt; "no"</span>
+
+jive.tell(<span class="hljs-string">"Hi, my name is Chad. How are you this evening?"</span>).then(<span class="hljs-built_in">console</span>.log);
+<span class="hljs-comment">//=&gt; "Hi Chad! I'm doing fine this evening, thank you!"</span>
+
+jive.tell(<span class="hljs-string">"I thought you were doing terribly and super depressed, honestly."</span>).then(<span class="hljs-built_in">console</span>.log);
+<span class="hljs-comment">//=&gt; "Well, technically I am super depressed, but it's not unmanageable."</span>
+
+jive.tell(<span class="hljs-string">"Oh, by the way, is your wife doing better?"</span>).then(<span class="hljs-built_in">console</span>.log);
+<span class="hljs-comment">//=&gt; "Yep! Really lucky: full recovery for my wife, actually!"</span></code></pre>
+				<h2 id="debugging">Debugging</h2>
+				<p>Pass <code>{ debug: true }</code> to the <code>JiveScript</code> constructor (or set <code>jive.options.debug = true</code> after initialization) to get debugging output to the console.</p>
+				<h2 id="playground-jsfiddle-">Playground (jsfiddle)</h2>
+				<p>Try it out <a href="https://jsfiddle.net/keegan_openbay/qwg9uvm3/72/">here</a>.</p>
 				<h2 id="contributing">Contributing</h2>
 				<p>Bug reports and pull requests for this project are welcome at its <a href="https://github.com/kjleitz/jivescript">GitHub page</a>. If you choose to contribute, please be nice so I don&#39;t have to run out of bubblegum, etc.</p>
 				<h2 id="license">License</h2>

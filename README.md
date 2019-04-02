@@ -64,6 +64,20 @@ jive.hear('yes or no', () => {
     jive.say(answer);
   });
 });
+
+// Check the message for what text was replaced in order to customize responses
+jive.hear('hi my name is * how are you *', (message) => {
+  const name = message.replacements['*'][0];
+  const time = message.replacements['*'][1];
+  jive.say(`Hi ${name}! I'm doing fine ${time}, thank you!`, () => {
+    jive.hear('i thought you were doing terribly and [*] honestly', (message) => {
+      jive.say(`Well, technically I am ${message.replacements['[*]'][0]}, but it's not unmanageable.`);
+    });
+    jive.hear('oh by the way is your (wife|brother) doing better', (message) => {
+      jive.say(`Yep! Really lucky: full recovery for my ${message.replacements['(wife|brother)'][0]}, actually!`);
+    });
+  });
+});
 ```
 
 ```js
@@ -92,9 +106,22 @@ jive.tell("Repeat after me: I ain't got TIME for this").then(console.log);
 
 jive.tell("Yes or no?").then(console.log);
 //=> "no"
+
+jive.tell("Hi, my name is Chad. How are you this evening?").then(console.log);
+//=> "Hi Chad! I'm doing fine this evening, thank you!"
+
+jive.tell("I thought you were doing terribly and super depressed, honestly.").then(console.log);
+//=> "Well, technically I am super depressed, but it's not unmanageable."
+
+jive.tell("Oh, by the way, is your wife doing better?").then(console.log);
+//=> "Yep! Really lucky: full recovery for my wife, actually!"
 ```
 
-## Playground
+## Debugging
+
+Pass `{ debug: true }` to the `JiveScript` constructor (or set `jive.options.debug = true` after initialization) to get debugging output to the console.
+
+## Playground (jsfiddle)
 
 Try it out [here](https://jsfiddle.net/keegan_openbay/qwg9uvm3/72/).
 

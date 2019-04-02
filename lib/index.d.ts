@@ -3,6 +3,9 @@ interface Message {
     interpreted: string;
     pattern: string;
     patternIndex: number;
+    replacements: {
+        [placeholder: string]: string[];
+    };
 }
 interface Trigger {
     patterns: string[];
@@ -10,8 +13,20 @@ interface Trigger {
 }
 declare class JiveScript {
     private triggerTier;
-    lastResponse?: string;
-    constructor();
+    currentResponse: string | null;
+    lastResponse: string | null;
+    options: {
+        cacheRegexes: boolean;
+        debug: boolean;
+    };
+    constructor({ cacheRegexes, debug }?: {
+        cacheRegexes?: boolean | undefined;
+        debug?: boolean | undefined;
+    });
+    private debug;
+    private log;
+    private warn;
+    private error;
     private readonly triggers;
     private matchTrigger;
     tell(text: string): Promise<string>;

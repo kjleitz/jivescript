@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Demo</title>
+  <script src="/lib/index.js"></script>
+  <style>
+    main {
+      display: flex;
+      flex-direction: column;
+      height: 80vh;
+      width: 50vw;
+      margin: 5vw auto;
+      align-items: stretch;
+    }
+
+    #chat-log {
+      flex-grow: 1;
+      border: 1px solid rgba(0, 0, 0, 0.25);
+      overflow-y: scroll;
+    }
+
+    #chat-log .user, #chat-log .bot {
+      padding: 0.5em;
+    }
+
+    #chat-log .bot {
+      background-color: rgba(0, 0, 0, 0.125);
+    }
+
+    #chat-input {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="input-area">
+      <input type="checkbox" name="debug" id="debug">
+      <label for="debug">Debug</label>
+    </div>
+    <div id="chat-log"></div>
+    <input id="chat-input" type="text" autofocus>
+  </main>
+
+  <script>
+    const jive = new JiveScript();
+
+    jive.hear('cool', () => {
+      jive.say('Sweet.');
+    });
+    
+    jive.hear(['hi [*]', 'hello [*]'], () => {
+      jive.say('Well, hi there!', () => {
+        jive.hear('are you a wizard', () => {
+          jive.say('Kinda.');
+        });
+      });
+    });
+    
+    jive.hear(['[*] (um|uh) [*]', '[*] er [*]'], (message) => {
+      switch (message.patternIndex) {
+        case 0: jive.say("Um, WHAT?"); break;
+        case 1: jive.say("u wot m8"); break;
+      }
+    });
+    
+    jive.hear('repeat after me *', (message) => {
+      jive.say(`You said "${message.text}", but technically I heard it as "${message.interpreted}"`);
+    });
+    
+    jive.hear('yes or no', () => {
+      return fetch('https://yesno.wtf/api').then(resp => resp.json()).then(({ answer }) => {
+        jive.say(answer);
+      });
+    });
+
+    document.getElementById('debug').addEventListener('input', (event) => {
+      jive.options.debug = event.target.checked;
+    });
+      
+    const chatLog = document.getElementById('chat-log');
+    const chatInput = document.getElementById('chat-input');
+    chatInput.addEventListener('keyup', (event) => {
+      if (event.keyCode !== 13) return;
+      const message = event.target.value;
+      const userRow = document.createElement('div');
+      userRow.className = 'user';
+      userRow.innerText = `user: ${message}`;
+      event.target.value = '';
+      chatLog.appendChild(userRow);
+      userRow.scrollIntoView(false);
+      jive.tell(message).then((response) => {
+        const botRow = document.createElement('div');
+        botRow.className = 'bot';
+        botRow.innerText = `bot: ${response}`;
+        chatLog.appendChild(botRow);
+        botRow.scrollIntoView(false);
+      });
+    });
+  </script>
+</body>
+</html>
