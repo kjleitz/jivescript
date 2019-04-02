@@ -1,6 +1,6 @@
 {
   "name": "jivescript",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Simple and lightweight chatbot framework",
   "main": "lib/index.js",
   "homepage": "https://github.com/kjleitz/jivescript",
@@ -11,7 +11,10 @@
     "url": "https://github.com/kjleitz/jivescript/issues"
   },
   "scripts": {
-    "build": "webpack && typedoc --out doc"
+    "build:lib": "webpack",
+    "build:doc": "typedoc --out doc",
+    "build:docs": "yarn build:doc",
+    "build": "yarn build:lib && yarn build:doc"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
