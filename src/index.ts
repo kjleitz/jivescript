@@ -30,9 +30,9 @@ const patternToRegex = (pattern: string): RegExp => {
     .toLowerCase()
     .replace(/ +/g, ' ') // condense whitespace
     .replace(/[^a-z0-9*\[\]\(\)| ]/g, '') // remove invalid characters
-    .replace(/\*/g, '.*') // wildcards
-    .replace(/ \[([^\]]*)\]/g, '( $1)?') // optional groups anywhere but the beginning of the string
-    .replace(/\[([^\]]*)\] /g, '($1 )?') // optional group at the beginning of the string
+    .replace(/\*/g, '(.+?)') // wildcards
+    .replace(/ \[([^\]]*)\]/g, '( $1)?') // optional groups anywhere but the beginning of the string (all of these must have spaces beforehand)
+    .replace(/\[([^\]]*)\] /g, '($1 )?') // optional group potentially at the beginning of the string (this one will have a space after it)
     .trim();
 
   return new RegExp(`^${regexString}$`);

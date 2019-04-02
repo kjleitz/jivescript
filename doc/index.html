@@ -65,8 +65,10 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<h1 id="jivescript">JiveScript</h1>
-				<p>Simple &amp; <em>very</em> lightweight chatbot framework.</p>
+				<p>Simple &amp; <em>very</em> lightweight chatbot framework. Trigger syntax heavily inspired by the lovely <a href="https://github.com/aichaos/rivescript-js">RiveScript</a>.</p>
 				<h2 id="installation">Installation</h2>
+				<p>Install via <code>npm</code>:</p>
+				<pre><code>npm <span class="hljs-keyword">install</span> jivescript</code></pre><p>Alternatively, install via <code>yarn</code>:</p>
 				<pre><code>yarn <span class="hljs-keyword">add</span><span class="bash"> jivescript</span></code></pre><h2 id="usage">Usage</h2>
 				<pre><code class="language-js"><span class="hljs-comment">// Your bot's brain:</span>
 
@@ -74,6 +76,16 @@
 
 <span class="hljs-keyword">const</span> jive = <span class="hljs-keyword">new</span> JiveScript();
 
+<span class="hljs-comment">// Use `hear()` to supply a pattern (or an array of them) which the bot can</span>
+<span class="hljs-comment">// match against what it is told.</span>
+jive.hear(<span class="hljs-string">'cool'</span>, () =&gt; {
+  <span class="hljs-comment">// Use `say()` to respond to that matched trigger.</span>
+  jive.say(<span class="hljs-string">'Sweet.'</span>);
+});
+
+<span class="hljs-comment">// Nest more triggers in order to match those ones first so the bot can follow a</span>
+<span class="hljs-comment">// thread of conversation, falling back to lower-level triggers if no match is</span>
+<span class="hljs-comment">// found for the nested ones.</span>
 jive.hear([<span class="hljs-string">'hi [*]'</span>, <span class="hljs-string">'hello [*]'</span>], () =&gt; {
   jive.say(<span class="hljs-string">'Well, hi there!'</span>, () =&gt; {
     jive.hear(<span class="hljs-string">'are you a wizard'</span>, () =&gt; {
@@ -82,6 +94,9 @@ jive.hear([<span class="hljs-string">'hi [*]'</span>, <span class="hljs-string">
   });
 });
 
+<span class="hljs-comment">// The callback passed to `hear()` will receive a `message` parameter that</span>
+<span class="hljs-comment">// contains information about the matched message, in case you would like to</span>
+<span class="hljs-comment">// decide what to say based on that info.</span>
 jive.hear([<span class="hljs-string">'[*] (um|uh) [*]'</span>, <span class="hljs-string">'[*] er [*]'</span>], (message) =&gt; {
   <span class="hljs-keyword">switch</span> (message.patternIndex) {
     <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>: jive.say(<span class="hljs-string">"Um, WHAT?"</span>); <span class="hljs-keyword">break</span>;
@@ -89,12 +104,16 @@ jive.hear([<span class="hljs-string">'[*] (um|uh) [*]'</span>, <span class="hljs
   }
 });
 
-jive.hear(<span class="hljs-string">'cool'</span>, (message) =&gt; {
-  jive.say(<span class="hljs-string">'Sweet.'</span>);
-});
-
 jive.hear(<span class="hljs-string">'repeat after me *'</span>, (message) =&gt; {
   jive.say(<span class="hljs-string">`You said "<span class="hljs-subst">${message.text}</span>", but technically I heard it as "<span class="hljs-subst">${message.interpreted}</span>"`</span>);
+});
+
+<span class="hljs-comment">// You can return a promise from the callback passed to `hear()` if your</span>
+<span class="hljs-comment">// response is dependent on an asynchronous action.</span>
+jive.hear(<span class="hljs-string">'yes or no'</span>, () =&gt; {
+  <span class="hljs-keyword">return</span> fetch(<span class="hljs-string">'https://yesno.wtf/api'</span>).then(<span class="hljs-function"><span class="hljs-params">resp</span> =&gt;</span> resp.json()).then(<span class="hljs-function">(<span class="hljs-params">{ answer }</span>) =&gt;</span> {
+    jive.say(answer);
+  });
 });</code></pre>
 				<pre><code class="language-js"><span class="hljs-comment">// Interacting with your bot:</span>
 
@@ -117,7 +136,10 @@ jive.tell(<span class="hljs-string">'I mean, er, I dunno, sorry'</span>).then(<s
 <span class="hljs-comment">//=&gt; "u wot m8"</span>
 
 jive.tell(<span class="hljs-string">"Repeat after me: I ain't got TIME for this"</span>).then(<span class="hljs-built_in">console</span>.log);
-<span class="hljs-comment">//=&gt; "You said "I ain't got TIME for this", but technically I heard it as "i aint got time for this"</span></code></pre>
+<span class="hljs-comment">//=&gt; "You said "I ain't got TIME for this", but technically I heard it as "i aint got time for this"</span>
+
+jive.tell(<span class="hljs-string">"Yes or no?"</span>).then(<span class="hljs-built_in">console</span>.log);
+<span class="hljs-comment">//=&gt; "no"</span></code></pre>
 				<h2 id="contributing">Contributing</h2>
 				<p>Bug reports and pull requests for this project are welcome at its <a href="https://github.com/kjleitz/jivescript">GitHub page</a>. If you choose to contribute, please be nice so I don&#39;t have to run out of bubblegum, etc.</p>
 				<h2 id="license">License</h2>

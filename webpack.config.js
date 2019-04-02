@@ -37,6 +37,7 @@ module.exports = {
     filename: 'index.js',
     path: path.resolve(__dirname, 'lib'),
     library: 'JiveScript',
+    libraryExport: 'default',
     libraryTarget: 'umd',
     umdNamedDefine: true,
     globalObject: "typeof self !== 'undefined' ? self : this",
