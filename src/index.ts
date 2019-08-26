@@ -134,8 +134,28 @@ class JiveScript {
     return this.matchTrigger(text);
   }
 
+  hear(pattern: string|string[], callback: Trigger['callback']): void {
+    const patterns = typeof pattern === 'string' ? [pattern] : pattern;
+    this.log(`Registering the following patterns to use for the next message:\n  - "${patterns.join('\n  - "')}"`)
+    this.triggers.push({
+      patterns,
+      callback,
+    });
+  }
+
+  say(responseText: string, callback?: () => void|Promise<void>): void {
+    this.log(`Using this response: "${responseText}"`);
+    this.currentResponse = responseText;
+    this.triggerTier = {
+      current: [],
+      parent: this.triggerTier,
+    }
+    if (callback) callback();
+  };
+
   tell(text: string): Promise<string> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, _reject) => {
+      this.log('\nNew message!\n\n');
       const triggerMatch = this.matchTrigger(text);
       if (!triggerMatch) {
         this.error(`Error: No matching trigger found!`);
@@ -160,24 +180,14 @@ class JiveScript {
     });
   }
 
-  hear(pattern: string|string[], callback: Trigger['callback']): void {
-    const patterns = typeof pattern === 'string' ? [pattern] : pattern;
-    this.log(`Registering the following patterns to use for the next message:\n  - "${patterns.join('\n  - "')}"`)
-    this.triggers.push({
-      patterns,
-      callback,
+  pretendTheySaid(text: string): Promise<string> {
+    return new Promise((resolve, _reject) => {
+      this.tell(text).then((response) => {
+        this.currentResponse = `${this.currentResponse} ${response}`;
+        resolve(response);
+      });
     });
   }
-
-  say(responseText: string, callback?: () => void|Promise<void>): void {
-    this.log(`Using this response: "${responseText}"`);
-    this.currentResponse = responseText;
-    this.triggerTier = {
-      current: [],
-      parent: this.triggerTier,
-    }
-    if (callback) callback();
-  };
 }
 
 export default JiveScript;

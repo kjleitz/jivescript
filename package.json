@@ -14,12 +14,14 @@
     "build:lib": "webpack",
     "build:doc": "typedoc --out doc",
     "build:docs": "yarn build:doc",
-    "build": "yarn build:lib && yarn build:doc"
+    "build": "yarn build:lib && yarn build:doc",
+    "serve": "http-server"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
     "babel-loader": "^8.0.5",
+    "http-server": "^0.11.1",
     "ts-loader": "^5.3.3",
     "typedoc": "^0.14.2",
     "typescript": "^3.4.1",

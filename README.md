@@ -121,9 +121,9 @@ jive.tell("Oh, by the way, is your wife doing better?").then(console.log);
 
 Pass `{ debug: true }` to the `JiveScript` constructor (or set `jive.options.debug = true` after initialization) to get debugging output to the console.
 
-## Playground (jsfiddle)
+## Playground
 
-Try it out [here](https://jsfiddle.net/keegan_openbay/qwg9uvm3/72/).
+Try it out [in the JSFiddle here](https://jsfiddle.net/keegan_openbay/qwg9uvm3/72/). **Note:** That link isn't guaranteed to be up-to-date, though, depending on the release. So, if you want to make sure you have all the bells and whistles, follow the steps in [the development section](#development), run `yarn serve`, and navigate to http://localhost:8080/demo.html so you can play around.
 
 ## Contributing
 
