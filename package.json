@@ -18,14 +18,14 @@
     "serve": "http-server"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.0",
-    "@babel/preset-env": "^7.4.2",
-    "babel-loader": "^8.0.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-loader": "^8.0.6",
     "http-server": "^0.11.1",
-    "ts-loader": "^5.3.3",
-    "typedoc": "^0.14.2",
-    "typescript": "^3.4.1",
-    "webpack": "^4.29.6"
+    "ts-loader": "^6.0.4",
+    "typedoc": "^0.15.0",
+    "typescript": "^3.5.3",
+    "webpack": "^4.39.2"
   },
   "keywords": [
     "chat",
