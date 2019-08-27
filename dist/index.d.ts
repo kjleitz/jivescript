@@ -29,8 +29,9 @@ declare class JiveScript {
     private error;
     private readonly triggers;
     private matchTrigger;
-    tell(text: string): Promise<string>;
     hear(pattern: string | string[], callback: Trigger['callback']): void;
     say(responseText: string, callback?: () => void | Promise<void>): void;
+    tell(text: string): Promise<string>;
+    pretendTheySaid(text: string): Promise<string>;
 }
 export default JiveScript;

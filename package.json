@@ -2,7 +2,8 @@
   "name": "jivescript",
   "version": "1.0.11",
   "description": "Simple and lightweight chatbot framework",
-  "main": "lib/index.js",
+  "main": "dist/jivescript.js",
+  "types": "dist/index.d.ts",
   "homepage": "https://github.com/kjleitz/jivescript",
   "repository": "https://github.com/kjleitz/jivescript",
   "author": "Keegan Leitz <kjleitz@gmail.com>",
@@ -18,6 +19,7 @@
     "serve": "http-server"
   },
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "babel-loader": "^8.0.6",
@@ -25,14 +27,21 @@
     "ts-loader": "^6.0.4",
     "typedoc": "^0.15.0",
     "typescript": "^3.5.3",
-    "webpack": "^4.39.2"
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7"
   },
   "keywords": [
-    "chat",
-    "chatbot",
-    "bot",
     "ai",
     "alexa",
-    "slackbot"
-  ]
+    "bot framework",
+    "bot",
+    "chat",
+    "chatbot",
+    "chat bot",
+    "slackbot",
+    "slack bot"
+  ],
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4"
+  }
 }

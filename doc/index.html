@@ -64,12 +64,19 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="jivescript">JiveScript</h1>
+				<a href="#jivescript" id="jivescript" style="color: inherit; text-decoration: none;">
+					<h1>JiveScript</h1>
+				</a>
 				<p>Simple &amp; <em>very</em> lightweight chatbot framework. Trigger syntax heavily inspired by the lovely <a href="https://github.com/aichaos/rivescript-js">RiveScript</a>.</p>
-				<h2 id="installation">Installation</h2>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
 				<p>Install via <code>npm</code>:</p>
 				<pre><code>npm <span class="hljs-keyword">install</span> jivescript</code></pre><p>Alternatively, install via <code>yarn</code>:</p>
-				<pre><code>yarn <span class="hljs-keyword">add</span><span class="bash"> jivescript</span></code></pre><h2 id="usage">Usage</h2>
+				<pre><code>yarn <span class="hljs-keyword">add</span><span class="bash"> jivescript</span></code></pre>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
 				<pre><code class="language-js"><span class="hljs-comment">// Your bot's brain:</span>
 
 <span class="hljs-keyword">import</span> JiveScript <span class="hljs-keyword">from</span> <span class="hljs-string">'jivescript'</span>;
@@ -163,13 +170,25 @@ jive.tell(<span class="hljs-string">"I thought you were doing terribly and super
 
 jive.tell(<span class="hljs-string">"Oh, by the way, is your wife doing better?"</span>).then(<span class="hljs-built_in">console</span>.log);
 <span class="hljs-comment">//=&gt; "Yep! Really lucky: full recovery for my wife, actually!"</span></code></pre>
-				<h2 id="debugging">Debugging</h2>
+				<a href="#debugging" id="debugging" style="color: inherit; text-decoration: none;">
+					<h2>Debugging</h2>
+				</a>
 				<p>Pass <code>{ debug: true }</code> to the <code>JiveScript</code> constructor (or set <code>jive.options.debug = true</code> after initialization) to get debugging output to the console.</p>
-				<h2 id="playground-jsfiddle-">Playground (jsfiddle)</h2>
-				<p>Try it out <a href="https://jsfiddle.net/keegan_openbay/qwg9uvm3/72/">here</a>.</p>
-				<h2 id="contributing">Contributing</h2>
+				<a href="#playground" id="playground" style="color: inherit; text-decoration: none;">
+					<h2>Playground</h2>
+				</a>
+				<p>Try it out <a href="https://jsfiddle.net/keegan_openbay/qwg9uvm3/72/">in the JSFiddle here</a>. <strong>Note:</strong> That link isn&#39;t guaranteed to be up-to-date, though, depending on the release. So, if you want to make sure you have all the bells and whistles, do the following:</p>
+				<pre><code>git <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>://github.com/kjleitz/jivescript
+cd jivescript
+yarn install <span class="hljs-comment"># or npm install</span>
+yarn serve <span class="hljs-comment"># or npm run serve</span></code></pre><p>...and navigate to <a href="http://localhost:8080/demo.html">http://localhost:8080/demo.html</a>, where you can play around.</p>
+				<a href="#contributing" id="contributing" style="color: inherit; text-decoration: none;">
+					<h2>Contributing</h2>
+				</a>
 				<p>Bug reports and pull requests for this project are welcome at its <a href="https://github.com/kjleitz/jivescript">GitHub page</a>. If you choose to contribute, please be nice so I don&#39;t have to run out of bubblegum, etc.</p>
-				<h2 id="license">License</h2>
+				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+					<h2>License</h2>
+				</a>
 				<p>This project is open source, under the terms of the <a href="https://github.com/kjleitz/jivescript/blob/master/LICENSE">MIT license</a>.</p>
 			</div>
 		</div>
@@ -203,6 +222,7 @@ jive.tell(<span class="hljs-string">"Oh, by the way, is your wife doing better?"
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -251,7 +271,7 @@ jive.tell(<span class="hljs-string">"Oh, by the way, is your wife doing better?"
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>

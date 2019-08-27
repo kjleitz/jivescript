@@ -123,7 +123,16 @@ Pass `{ debug: true }` to the `JiveScript` constructor (or set `jive.options.deb
 
 ## Playground
 
-Try it out [in the JSFiddle here](https://jsfiddle.net/keegan_openbay/qwg9uvm3/72/). **Note:** That link isn't guaranteed to be up-to-date, though, depending on the release. So, if you want to make sure you have all the bells and whistles, follow the steps in [the development section](#development), run `yarn serve`, and navigate to http://localhost:8080/demo.html so you can play around.
+Try it out [in the JSFiddle here](https://jsfiddle.net/keegan_openbay/qwg9uvm3/72/). **Note:** That link isn't guaranteed to be up-to-date, though, depending on the release. So, if you want to make sure you have all the bells and whistles, do the following:
+
+```
+git clone https://github.com/kjleitz/jivescript
+cd jivescript
+yarn install # or npm install
+yarn serve # or npm run serve
+```
+
+...and navigate to http://localhost:8080/demo.html, where you can play around.
 
 ## Contributing
 
