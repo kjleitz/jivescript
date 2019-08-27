@@ -1,6 +1,6 @@
 {
   "name": "jivescript",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Simple and lightweight chatbot framework",
   "main": "dist/jivescript.js",
   "types": "dist/index.d.ts",
