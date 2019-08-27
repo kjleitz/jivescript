@@ -16,14 +16,18 @@
     "build:doc": "typedoc --out doc",
     "build:docs": "yarn build:doc",
     "build": "yarn build:lib && yarn build:doc",
-    "serve": "http-server"
+    "serve": "http-server",
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "@types/jest": "^24.0.18",
     "babel-loader": "^8.0.6",
     "http-server": "^0.11.1",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.0.2",
     "ts-loader": "^6.0.4",
     "typedoc": "^0.15.0",
     "typescript": "^3.5.3",

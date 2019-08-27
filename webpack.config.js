@@ -6,28 +6,14 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        exclude: /node_modules/,
+        exclude: [
+          /node_modules/,
+          /__tests__/,
+          /\.d\.ts$/,
+        ],
         use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                [
-                  "@babel/env",
-                  {
-                    targets: {
-                      browsers: "> 1% in US",
-                    },
-                    useBuiltIns: "usage",
-                  },
-                ],
-              ],
-              plugins: ['@babel/plugin-proposal-object-rest-spread']
-            }
-          },
-          {
-            loader: 'ts-loader',
-          },
+          'babel-loader',
+          'ts-loader',
         ],
       },
     ],
