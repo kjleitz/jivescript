@@ -123,7 +123,7 @@ Pass `{ debug: true }` to the `JiveScript` constructor (or set `jive.options.deb
 
 ## Playground
 
-Try it out [in the JSFiddle here](https://jsfiddle.net/keegan_openbay/qwg9uvm3/72/). **Note:** That link isn't guaranteed to be up-to-date, though, depending on the release. So, if you want to make sure you have all the bells and whistles, do the following:
+Try it out [in the JSFiddle here](https://jsfiddle.net/keegan_openbay/qwg9uvm3). **Note:** That link isn't guaranteed to be up-to-date, though, depending on the release. So, if you want to make sure you have all the bells and whistles, do the following:
 
 ```
 git clone https://github.com/kjleitz/jivescript
