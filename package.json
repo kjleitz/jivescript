@@ -13,7 +13,7 @@
   },
   "scripts": {
     "build:lib": "webpack",
-    "build:doc": "typedoc --out doc",
+    "build:doc": "typedoc --out doc --exclude \"node_modules/**\"",
     "build:docs": "yarn build:doc",
     "build": "yarn build:lib && yarn build:doc",
     "serve": "http-server",
